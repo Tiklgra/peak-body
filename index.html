@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PEAK Method - Purpose. Evaluation. Action. Knowledge.</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(2,5)'%3E%3Cpath d='M4 20 C4 8,14 4,22 12 C27 17,28 20,30 20 C32 20,33 17,38 12 C46 4,56 8,56 20 C56 32,46 36,38 28 C33 23,32 20,30 20 C28 20,27 23,22 28 C14 36,4 32,4 20 Z' stroke='%236b7c5e' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M4 20 C4 32,14 36,22 28 C27 23,28 20,30 20 C32 20,33 23,38 28 C46 36,56 32,56 20 C56 8,46 4,38 12 C33 17,32 20,30 20 C28 20,27 17,22 12 C14 4,4 8,4 20 Z' stroke='%236b7c5e' stroke-width='2.5' fill='none' stroke-linecap='round' opacity='0.55'/%3E%3Cline x1='10' y1='12' x2='10' y2='28' stroke='%236b7c5e' stroke-width='1.5' opacity='0.35'/%3E%3Cline x1='16' y1='8' x2='16' y2='32' stroke='%236b7c5e' stroke-width='1.5' opacity='0.35'/%3E%3Cline x1='22' y1='10' x2='22' y2='30' stroke='%236b7c5e' stroke-width='1.5' opacity='0.35'/%3E%3Cline x1='38' y1='10' x2='38' y2='30' stroke='%236b7c5e' stroke-width='1.5' opacity='0.35'/%3E%3Cline x1='44' y1='8' x2='44' y2='32' stroke='%236b7c5e' stroke-width='1.5' opacity='0.35'/%3E%3Cline x1='50' y1='12' x2='50' y2='28' stroke='%236b7c5e' stroke-width='1.5' opacity='0.35'/%3E%3Ccircle cx='30' cy='20' r='3.5' fill='%23c9a96e'/%3E%3Ccircle cx='30' cy='20' r='1.8' fill='%23f5f0eb'/%3E%3C/g%3E%3C/svg%3E">
-    <meta name="description" content="The PEAK Method: Purpose. Evaluation. Action. Knowledge. A systematic approach to personal optimization that works with your body's natural intelligence.">
+    <meta name="description" content="The PEAK Method: Purpose. Evaluation. Action. Knowledge. A framework for intentional growth across Body, Money, and Life.">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -150,50 +150,6 @@
             font-weight: 400;
         }
         
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-align: center;
-            min-width: 200px;
-        }
-        
-        .btn-primary {
-            background: var(--gold);
-            color: var(--anthracite);
-        }
-        
-        .btn-primary:hover {
-            background: #d4b578;
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--anthracite);
-        }
-        
         /* Section Styles */
         .section {
             padding: 80px 0;
@@ -333,9 +289,41 @@
             text-decoration: none;
         }
         
-        .pillar-card .btn {
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
             width: 100%;
             max-width: 250px;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--anthracite);
+        }
+        
+        .btn-primary:hover {
+            background: #d4b578;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--anthracite);
+            border: 2px solid var(--anthracite);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--anthracite);
+            color: var(--white);
         }
         
         /* About Elena */
@@ -455,16 +443,6 @@
                 display: block;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
             .about-elena {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -558,12 +536,8 @@
     <section class="hero" id="hero">
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Purpose. Evaluation. Action. Knowledge.</h1>
-                <p class="subline">A systematic approach to personal optimization that works with your natural intelligence. Transform your body, optimize your performance, and build sustainable success across all areas of life.</p>
-                <div class="cta-buttons">
-                    <a href="#pillars" class="btn btn-primary">Explore the Three Pillars</a>
-                    <a href="#peak-method" class="btn btn-secondary">Learn the Method</a>
-                </div>
+                <h1>Become the Best Version of Yourself</h1>
+                <p class="subline">The PEAK Method is a framework for intentional growth across Body, Money, and Life</p>
             </div>
         </div>
     </section>
@@ -572,27 +546,27 @@
     <section class="section" id="peak-method">
         <div class="container">
             <h2>The PEAK Method</h2>
-            <p class="section-intro">A systematic approach to personal optimization that works with your body's natural intelligence, not against it.</p>
+            <p class="section-intro">A systematic framework for intentional growth that works with your natural intelligence, not against it.</p>
             <div class="peak-grid">
                 <div class="peak-item">
                     <div class="peak-letter">P</div>
                     <h4>Purpose</h4>
-                    <p>Clear intention behind every action. No random workouts or restrictive diets. Everything serves your long-term vision.</p>
+                    <p>Discover your purpose, be honest with yourself, and set goals with a feasible strategy.</p>
                 </div>
                 <div class="peak-item">
                     <div class="peak-letter">E</div>
                     <h4>Evaluation</h4>
-                    <p>Data-driven awareness of what's actually happening in your body. Track energy, stress markers, and real progress indicators.</p>
+                    <p>Know yourself through SWOT analysis: strengths, weaknesses, opportunities, threats. Reflect on your situation with the law of awareness.</p>
                 </div>
                 <div class="peak-item">
                     <div class="peak-letter">A</div>
                     <h4>Action</h4>
-                    <p>Strategic implementation of smart training, nutrition awareness, and stress regulation that fits your demanding schedule.</p>
+                    <p>Take strategic action: journaling for your mind, nutrition and routine for your body, financial planning and budgeting for your money.</p>
                 </div>
                 <div class="peak-item">
                     <div class="peak-letter">K</div>
                     <h4>Knowledge</h4>
-                    <p>Understanding how your body actually works. Biohacking principles explained simply, without the complexity or spiritual fluff.</p>
+                    <p>Track progress, review quarterly, measure facts before and after. Optimize based on your learnings.</p>
                 </div>
             </div>
         </div>
@@ -601,25 +575,25 @@
     <!-- Three Pillars -->
     <section class="section pearl" id="pillars">
         <div class="container">
-            <h2>Three Pillars of Optimization</h2>
-            <p class="section-intro">The PEAK Method applies across three key areas of your life. Master one, then expand to the others.</p>
+            <h2>Three Pillars of Growth</h2>
+            <p class="section-intro">The PEAK Method applies across three key areas of your life.</p>
             <div class="pillars-grid">
                 <div class="pillar-card available">
                     <div class="pillar-icon">💪</div>
                     <h4>Body</h4>
-                    <p>Stop fighting your body. Start optimizing it. A 6-month system combining smart training, nutrition awareness, and stress regulation for sustainable results without burnout.</p>
+                    <p><strong>You need to know your body.</strong> Physical optimization through training, nutrition, and stress regulation.</p>
                     <a href="/peakbody" class="btn btn-primary">Explore PeakBody</a>
                 </div>
                 <div class="pillar-card coming-soon">
                     <div class="pillar-icon">💰</div>
                     <h4>Money</h4>
-                    <p>Financial optimization for high performers. Build wealth systematically while maintaining your values and avoiding the complexity that burns out successful people.</p>
+                    <p><strong>You need to know your finances.</strong> Financial strategy, budgeting, investment, and wealth building.</p>
                     <a href="#" class="btn btn-secondary">Coming Soon</a>
                 </div>
                 <div class="pillar-card coming-soon">
                     <div class="pillar-icon">🎯</div>
                     <h4>Life</h4>
-                    <p>Relationship and lifestyle optimization. Navigate career success, personal relationships, and life transitions with clarity and intentional action.</p>
+                    <p><strong>You need to know yourself first.</strong> Relationships, emotional agility, mindfulness, and personal values.</p>
                     <a href="#" class="btn btn-secondary">Coming Soon</a>
                 </div>
             </div>
@@ -664,7 +638,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>PEAK Method</h4>
-                    <p>Systematic personal optimization for high performers who want sustainable results without burnout.</p>
+                    <p>A framework for intentional growth across Body, Money, and Life for high performers who want sustainable results without burnout.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
