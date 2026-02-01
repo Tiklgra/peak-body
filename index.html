@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeakBody - Body Optimization System for High-Performing Women</title>
+    <meta name="description" content="A 6-month body optimization system combining smart training, nutrition awareness, and stress regulation for professional women 30+ who want sustainable results without burnout.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --anthracite: #2d2d2d;
+            --pearl: #f5f0eb;
+            --olive: #6b7c5e;
+            --gold: #c9a96e;
+            --white: #ffffff;
+            --light-gray: #f9f7f4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--anthracite);
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(107, 124, 94, 0.1);
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(45, 45, 45, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--anthracite);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--olive);
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--anthracite);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.8), rgba(107, 124, 94, 0.6)), url('assets/images/hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .subline {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .btn-primary {
+            background: var(--gold);
+            color: var(--anthracite);
+        }
+        
+        .btn-primary:hover {
+            background: #d4b578;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--anthracite);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section.pearl {
+            background: var(--pearl);
+        }
+        
+        .section.light {
+            background: var(--light-gray);
+        }
+        
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--anthracite);
+        }
+        
+        .section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 20px;
+            color: var(--anthracite);
+        }
+        
+        .section-intro {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            color: var(--anthracite);
+        }
+        
+        /* Problem Section */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .problem-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(45, 45, 45, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .problem-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--olive);
+            font-weight: 600;
+        }
+        
+        .problem-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* PEAK Method */
+        .peak-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .peak-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .peak-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--olive);
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        
+        .peak-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--anthracite);
+            font-weight: 600;
+        }
+        
+        .peak-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .program-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(45, 45, 45, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--olive);
+            font-weight: 600;
+        }
+        
+        .program-card p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .program-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        /* Core Offer */
+        .core-offer {
+            background: linear-gradient(135deg, var(--olive), #5a6951);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .core-offer h2 {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+        
+        .offer-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .offer-duration {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .offer-includes {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            text-align: left;
+        }
+        
+        .offer-includes ul {
+            list-style: none;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .offer-includes li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .offer-includes li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        /* About Elena */
+        .about-elena {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 50px;
+        }
+        
+        .elena-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(45, 45, 45, 0.15);
+        }
+        
+        .elena-content h3 {
+            margin-bottom: 20px;
+        }
+        
+        .elena-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .timeline-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            position: relative;
+        }
+        
+        .timeline-weeks {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--olive);
+            margin-bottom: 15px;
+        }
+        
+        .timeline-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--anthracite);
+        }
+        
+        /* What This Is NOT */
+        .not-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .not-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e8e6e2;
+            position: relative;
+        }
+        
+        .not-item:before {
+            content: "✗";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            color: #d65a5a;
+            font-size: 1.5rem;
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .not-item p {
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: var(--anthracite);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .newsletter h2 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            background: var(--gold);
+            color: var(--anthracite);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #d4b578;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--pearl);
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--anthracite);
+        }
+        
+        .footer-section p, .footer-section a {
+            color: var(--anthracite);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: var(--olive);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #e0d9d0;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: var(--anthracite);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .about-elena {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form button {
+                width: 100%;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        /* Smooth Transitions */
+        .section, .problem-card, .program-card, .timeline-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .section.visible, .problem-card.visible, .program-card.visible, .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <img src="assets/images/logo.jpg" alt="PeakBody Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="#peak-method">PEAK Method</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#about">About Elena</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Stop Fighting Your Body.<br>Start Optimizing It.</h1>
+                <p class="subline">A 6-month body optimization system for high-performing women who want to look fit, feel regulated, and perform at their best—without burning out.</p>
+                <div class="cta-buttons">
+                    <a href="https://buy.stripe.com/fZe8Al4RW9ERbdK7su" class="btn btn-primary">Start 10-Week Program - €30/month</a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSezIPojCLvTM3IwfHdu2ZqtBZi02yzcwzlKjY1q0PJDnao1_g/viewform" class="btn btn-secondary">Apply for PeakBody</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="section pearl" id="problem">
+        <div class="container">
+            <h2>You're Doing Everything Right. But Your Body Isn't Responding.</h2>
+            <p class="section-intro">You're successful in every area of your life. But when it comes to your body, you feel stuck in a cycle of chronic stress, hormonal chaos, and programs that don't work for real life.</p>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <h4>Chronic Stress Response</h4>
+                    <p>Your nervous system is stuck in overdrive. Sleep is poor, energy crashes are regular, and your body holds onto stress weight despite your best efforts.</p>
+                </div>
+                <div class="problem-card">
+                    <h4>Hormonal Imbalance</h4>
+                    <p>Mood swings, cycle irregularities, cortisol dysregulation, and emotional eating patterns that no amount of willpower seems to fix.</p>
+                </div>
+                <div class="problem-card">
+                    <h4>Generic Solutions</h4>
+                    <p>Every program you've tried ignores the reality of your demanding life. "Eat less, move more" doesn't account for stress, hormones, or sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PEAK Method -->
+    <section class="section" id="peak-method">
+        <div class="container">
+            <h2>The PEAK Method</h2>
+            <p class="section-intro">A systematic approach to personal optimization that works with your body's natural intelligence, not against it.</p>
+            <div class="peak-grid">
+                <div class="peak-item">
+                    <div class="peak-letter">P</div>
+                    <h4>Purpose</h4>
+                    <p>Clear intention behind every action. No random workouts or restrictive diets. Everything serves your long-term vision.</p>
+                </div>
+                <div class="peak-item">
+                    <div class="peak-letter">E</div>
+                    <h4>Evaluation</h4>
+                    <p>Data-driven awareness of what's actually happening in your body. Track energy, stress markers, and real progress indicators.</p>
+                </div>
+                <div class="peak-item">
+                    <div class="peak-letter">A</div>
+                    <h4>Action</h4>
+                    <p>Strategic implementation of smart training, nutrition awareness, and stress regulation that fits your demanding schedule.</p>
+                </div>
+                <div class="peak-item">
+                    <div class="peak-letter">K</div>
+                    <h4>Knowledge</h4>
+                    <p>Understanding how your body actually works. Biohacking principles explained simply, without the complexity or spiritual fluff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PeakBody Introduction -->
+    <section class="section light" id="peakbody">
+        <div class="container">
+            <h2>PeakBody: Body Optimization for Real Life</h2>
+            <p class="section-intro">PeakBody is the body pillar of the PEAK Method. It's not a fitness app—it's a mentor-led body optimization system that combines smart training, nutrition awareness, stress regulation, and blood analysis to help you achieve sustainable results without compromising your performance or wellbeing.</p>
+        </div>
+    </section>
+
+    <!-- Programs Overview -->
+    <section class="section pearl" id="programs">
+        <div class="container">
+            <h2>Choose Your Starting Point</h2>
+            <p class="section-intro">All programs can be accessed individually or together inside the PeakBody system. Start where it makes most sense for your current situation.</p>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h4>10-Week Weight Loss Program</h4>
+                    <p>Smart fat loss without restriction. Deep core, strength, and mobility work that's hormone and stress-aware. Your foundational entry point.</p>
+                    <div class="program-price">€30/month</div>
+                    <a href="https://buy.stripe.com/fZe8Al4RW9ERbdK7su" class="btn btn-primary">Start Now</a>
+                </div>
+                <div class="program-card">
+                    <h4>Longevity Program</h4>
+                    <p>Strength, muscle, and mobility for healthy aging. Focus on injury prevention and long-term body resilience.</p>
+                    <div class="program-price">€30/month</div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSezIPojCLvTM3IwfHdu2ZqtBZi02yzcwzlKjY1q0PJDnao1_g/viewform" class="btn btn-secondary">Apply</a>
+                </div>
+                <div class="program-card">
+                    <h4>9-5 Job Body Repair</h4>
+                    <p>Designed for desk workers. Address back, hip, neck, and posture issues with short, realistic routines that reduce stress and tension.</p>
+                    <div class="program-price">€30/month</div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSezIPojCLvTM3IwfHdu2ZqtBZi02yzcwzlKjY1q0PJDnao1_g/viewform" class="btn btn-secondary">Apply</a>
+                </div>
+                <div class="program-card">
+                    <h4>Anti-Stress Breathwork</h4>
+                    <p>Science-based nervous system regulation. Improve sleep, recovery, and emotional regulation without spiritual complexity.</p>
+                    <div class="program-price">€30/month</div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSezIPojCLvTM3IwfHdu2ZqtBZi02yzcwzlKjY1q0PJDnao1_g/viewform" class="btn btn-secondary">Apply</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Offer -->
+    <section class="core-offer" id="core-offer">
+        <div class="container">
+            <h2>PeakBody: Complete 6-Month System</h2>
+            <div class="offer-price">€1,500</div>
+            <div class="offer-duration">6 months / All programs included</div>
+            <div class="offer-includes">
+                <ul>
+                    <li>Access to Playbook App (all 4 programs)</li>
+                    <li>Comprehensive Nutrition Guide (micros & macros, no dieting)</li>
+                    <li>Tracking Templates (habits, energy, cycle, stress)</li>
+                    <li>6 × 1:1 Mentoring Calls (45 minutes each)</li>
+                    <li>Blood Test Discounts (longevity & health markers)</li>
+                </ul>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSezIPojCLvTM3IwfHdu2ZqtBZi02yzcwzlKjY1q0PJDnao1_g/viewform" class="btn btn-primary">Apply for PeakBody</a>
+        </div>
+    </section>
+
+    <!-- About Elena -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>Meet Elena</h2>
+            <div class="about-elena">
+                <div>
+                    <img src="assets/images/elena-about.jpeg" alt="Elena - PeakBody Mentor" class="elena-image">
+                </div>
+                <div class="elena-content">
+                    <h3>Your Body Optimization Mentor</h3>
+                    <p>I've been where you are. High-performing, driven, and frustrated by a body that wasn't responding to traditional approaches. After years of fighting chronic stress, hormonal imbalances, and generic programs that ignored my real life, I developed the PEAK Method.</p>
+                    <p>This system has been tested on myself and hundreds of women who needed something smarter than "eat less, move more." I combine biohacking principles with mentoring wisdom to help you achieve sustainable results without sacrificing your performance or wellbeing.</p>
+                    <p>This isn't about motivation—it's about optimization. And optimization requires a systematic approach that works with your body's intelligence, not against it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Timeline -->
+    <section class="section pearl" id="timeline">
+        <div class="container">
+            <h2>Your Transformation Journey</h2>
+            <p class="section-intro">This is not a challenge. It's a systematic body reset that compounds over time.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-weeks">8 Weeks</div>
+                    <h4>Foundation Set</h4>
+                    <p>Noticeable habit shifts, better energy regulation, and improved stress response. Your nervous system begins to reset.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-weeks">10 Weeks</div>
+                    <h4>Visible Changes</h4>
+                    <p>Body composition improvements become apparent. Sleep quality and energy stability reach new levels. Hormonal balance improves.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-weeks">6 Months</div>
+                    <h4>Systemic Reset</h4>
+                    <p>Compounding results. You feel and function like a different person. The system becomes effortless and sustainable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What This Is NOT -->
+    <section class="section" id="what-not">
+        <div class="container">
+            <h2>What This Is NOT</h2>
+            <p class="section-intro">Clear boundaries matter. This is not another quick fix or generic program.</p>
+            <div class="not-list">
+                <div class="not-item">
+                    <p>Gym Culture</p>
+                </div>
+                <div class="not-item">
+                    <p>Diet Culture</p>
+                </div>
+                <div class="not-item">
+                    <p>Influencer Fitness</p>
+                </div>
+                <div class="not-item">
+                    <p>"Eat Less, Move More"</p>
+                </div>
+                <div class="not-item">
+                    <p>Generic Programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>BodyReset Newsletter</h2>
+            <p>Biohacking insights explained simply. Experience-based wisdom delivered to high-performing women who want to optimize their bodies intelligently.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Join Waitlist</button>
+            </div>
+            <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8;">Kit.com form integration coming soon</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PeakBody</h4>
+                    <p>Body optimization system for high-performing women who want sustainable results without burnout.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p><a href="https://instagram.com/elle_peak_" target="_blank">@elle_peak_</a></p>
+                    <p>Instagram</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <p>Questions about programs?</p>
+                    <p>Reach out via Instagram DM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PeakBody. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.section, .problem-card, .program-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter form placeholder functionality
+        document.querySelector('.newsletter-form button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = document.querySelector('.newsletter-form input').value;
+            if (email) {
+                alert('Thank you for your interest! The Kit.com form integration is coming soon. We\'ll notify you when the newsletter is ready.');
+                document.querySelector('.newsletter-form input').value = '';
+            }
+        });
+
+        // Mobile menu toggle (basic functionality for future enhancement)
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            // Future: Add mobile menu toggle functionality
+            console.log('Mobile menu clicked - functionality to be implemented');
+        });
+    </script>
+</body>
+</html>
