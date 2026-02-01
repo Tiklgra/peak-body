@@ -3,28 +3,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 <style>body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#fff;flex-direction:column;gap:40px;font-family:Montserrat,sans-serif;}
 .card{padding:40px 60px;border:1px solid #eee;border-radius:16px;text-align:center;}
-h3{color:#2d2d2d;margin-top:20px;}</style></head>
+h3{color:#2d2d2d;margin-top:20px;}
+.big{transform:scale(3);margin:80px;}</style></head>
 <body>
 <div class="card">
-<svg width="400" height="100" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(2, 5)">
-    <path d="M6 20 C6 8, 18 4, 28 12 C34 17, 36 20, 38 20 C40 20, 42 17, 48 12 C58 4, 70 8, 70 20 C70 32, 58 36, 48 28 C42 23, 40 20, 38 20 C36 20, 34 23, 28 28 C18 36, 6 32, 6 20 Z" stroke="#6b7c5e" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M6 20 C6 32, 18 36, 28 28 C34 23, 36 20, 38 20 C40 20, 42 23, 48 28 C58 36, 70 32, 70 20 C70 8, 58 4, 48 12 C42 17, 40 20, 38 20 C36 20, 34 17, 28 12 C18 4, 6 8, 6 20 Z" stroke="#6b7c5e" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55"/>
-    <line x1="11" y1="13" x2="11" y2="27" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="16" y1="9" x2="16" y2="31" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="21" y1="8" x2="21" y2="32" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="26" y1="10" x2="26" y2="30" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="31" y1="14" x2="31" y2="26" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="45" y1="14" x2="45" y2="26" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="50" y1="10" x2="50" y2="30" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="55" y1="8" x2="55" y2="32" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="60" y1="9" x2="60" y2="31" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <line x1="65" y1="13" x2="65" y2="27" stroke="#6b7c5e" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
-    <circle cx="38" cy="20" r="3" fill="#c9a96e"/>
-    <circle cx="38" cy="20" r="1.5" fill="#f5f0eb"/>
+<div class="big">
+<svg width="160" height="50" viewBox="0 0 160 50" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 0)">
+    <!-- Strand 1: flows like a tall wave, open ends spreading outward -->
+    <path d="M8 6 C14 6, 18 16, 22 22 C26 28, 30 38, 36 44 C38 46, 40 46, 42 44 C48 38, 52 28, 56 22 C60 16, 64 6, 70 6" 
+          stroke="#6b7c5e" stroke-width="2" fill="none" stroke-linecap="round"/>
+    
+    <!-- Strand 2: opposite phase, crossing strand 1 -->
+    <path d="M8 44 C14 44, 18 34, 22 28 C26 22, 30 12, 36 6 C38 4, 40 4, 42 6 C48 12, 52 22, 56 28 C60 34, 64 44, 70 44" 
+          stroke="#6b7c5e" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+    <!-- Horizontal rungs -->
+    <line x1="14" y1="12" x2="14" y2="38" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    <line x1="18" y1="16" x2="18" y2="34" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    <line x1="22" y1="22" x2="22" y2="28" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    
+    <line x1="30" y1="32" x2="30" y2="18" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    <line x1="34" y1="38" x2="34" y2="12" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    
+    <line x1="44" y1="12" x2="44" y2="38" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    <line x1="48" y1="18" x2="48" y2="32" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    
+    <line x1="56" y1="28" x2="56" y2="22" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    <line x1="60" y1="34" x2="60" y2="16" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+    <line x1="64" y1="38" x2="64" y2="12" stroke="#6b7c5e" stroke-width="0.8" opacity="0.25" stroke-linecap="round"/>
+
+    <!-- Gold accent at center crossing -->
+    <circle cx="39" cy="25" r="3" fill="#c9a96e"/>
+    <circle cx="39" cy="25" r="1.5" fill="#f5f0eb"/>
   </g>
-  <text x="82" y="32" font-family="'Montserrat', 'Helvetica Neue', sans-serif" font-weight="600" font-size="20" fill="#2d2d2d" letter-spacing="0.5">PeakBody</text>
+  
+  <text x="80" y="32" font-family="'Montserrat', 'Helvetica Neue', sans-serif" font-weight="600" font-size="18" fill="#2d2d2d" letter-spacing="0.5">PeakBody</text>
 </svg>
-<h3>Infinity Double Helix v2</h3>
+</div>
+<h3>Double Helix v6 — Tall DNA, Open Spreading Ends</h3>
 </div>
 </body></html>
