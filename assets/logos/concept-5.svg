@@ -1,0 +1,49 @@
+<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+      .text { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; fill: #2d2d2d; }
+    </style>
+  </defs>
+  
+  <!-- Molecular peak structure -->
+  <g>
+    <!-- Mountain/peak outline with molecular bonds -->
+    <path d="M20 70 L40 40 L50 20 L60 40 L80 70" 
+          stroke="#6b7c5e" stroke-width="2.5" fill="none"/>
+    
+    <!-- Secondary peaks -->
+    <path d="M15 75 L25 65 L35 75" 
+          stroke="#6b7c5e" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M65 75 L75 65 L85 75" 
+          stroke="#6b7c5e" stroke-width="2" fill="none" opacity="0.8"/>
+    
+    <!-- Molecular nodes (golden dots at joints) -->
+    <circle cx="20" cy="70" r="2.5" fill="#c9a96e"/>
+    <circle cx="40" cy="40" r="2.5" fill="#c9a96e"/>
+    <circle cx="50" cy="20" r="3" fill="#c9a96e"/>
+    <circle cx="60" cy="40" r="2.5" fill="#c9a96e"/>
+    <circle cx="80" cy="70" r="2.5" fill="#c9a96e"/>
+    
+    <!-- Additional molecular joints -->
+    <circle cx="15" cy="75" r="2" fill="#c9a96e" opacity="0.8"/>
+    <circle cx="25" cy="65" r="2" fill="#c9a96e" opacity="0.8"/>
+    <circle cx="35" cy="75" r="2" fill="#c9a96e" opacity="0.8"/>
+    <circle cx="65" cy="75" r="2" fill="#c9a96e" opacity="0.8"/>
+    <circle cx="75" cy="65" r="2" fill="#c9a96e" opacity="0.8"/>
+    <circle cx="85" cy="75" r="2" fill="#c9a96e" opacity="0.8"/>
+    
+    <!-- Connecting molecular bonds (internal structure) -->
+    <line x1="40" y1="40" x2="30" y2="55" stroke="#6b7c5e" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="40" x2="70" y2="55" stroke="#6b7c5e" stroke-width="1.5" opacity="0.6"/>
+    <line x1="45" y1="30" x2="55" y2="30" stroke="#6b7c5e" stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Base molecular structure -->
+    <line x1="25" y1="68" x2="75" y2="68" stroke="#6b7c5e" stroke-width="1" opacity="0.4"/>
+    <circle cx="30" cy="55" r="1.5" fill="#c9a96e" opacity="0.6"/>
+    <circle cx="70" cy="55" r="1.5" fill="#c9a96e" opacity="0.6"/>
+  </g>
+  
+  <!-- PeakBody text -->
+  <text x="110" y="45" class="text">PeakBody</text>
+</svg>

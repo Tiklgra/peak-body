@@ -1,0 +1,33 @@
+<svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+      .text { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 16px; fill: #2d2d2d; }
+    </style>
+  </defs>
+  
+  <!-- DNA Helix forming mountain peak -->
+  <g>
+    <!-- Left DNA strand -->
+    <path d="M15 70 Q25 60, 35 50 Q45 40, 55 30 Q65 20, 75 15" 
+          stroke="#6b7c5e" stroke-width="2.5" fill="none" opacity="0.9"/>
+    
+    <!-- Right DNA strand -->
+    <path d="M85 70 Q75 60, 65 50 Q55 40, 45 30 Q35 20, 25 15" 
+          stroke="#6b7c5e" stroke-width="2.5" fill="none" opacity="0.9"/>
+    
+    <!-- Connecting bonds (horizontal lines) -->
+    <line x1="20" y1="65" x2="80" y2="65" stroke="#6b7c5e" stroke-width="1.5" opacity="0.7"/>
+    <line x1="25" y1="55" x2="75" y2="55" stroke="#6b7c5e" stroke-width="1.5" opacity="0.7"/>
+    <line x1="30" y1="45" x2="70" y2="45" stroke="#6b7c5e" stroke-width="1.5" opacity="0.7"/>
+    <line x1="35" y1="35" x2="65" y2="35" stroke="#6b7c5e" stroke-width="1.5" opacity="0.7"/>
+    <line x1="40" y1="25" x2="60" y2="25" stroke="#6b7c5e" stroke-width="1.5" opacity="0.7"/>
+    
+    <!-- Golden peak accent -->
+    <circle cx="50" cy="15" r="3" fill="#c9a96e"/>
+    <path d="M47 18 L50 12 L53 18 Z" fill="#c9a96e" opacity="0.8"/>
+  </g>
+  
+  <!-- PeakBody text -->
+  <text x="110" y="45" class="text">PeakBody</text>
+</svg>
