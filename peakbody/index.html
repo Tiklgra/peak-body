@@ -570,6 +570,66 @@
             .section {
                 padding: 60px 0;
             }
+            
+            /* Feature cards: 1 column on mobile */
+            .features-grid {
+                grid-template-columns: 1fr !important;
+                gap: 25px !important;
+            }
+            
+            /* Axo Longevity: stack vertically on mobile */
+            .axo-grid {
+                grid-template-columns: 1fr !important;
+                padding: 30px 25px !important;
+                gap: 30px !important;
+            }
+            
+            /* Individual program cards: 1 column on mobile */
+            .individual-programs-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Pricing feature list: 1 column on mobile */
+            .pricing-grid {
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
+            }
+            
+            /* Testimonials carousel: reduce side padding */
+            .testimonials-carousel {
+                padding: 0 40px;
+            }
+            
+            /* Problems grid: ensure 1 column */
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Timeline: 1 column */
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Not list: fewer columns */
+            .not-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .not-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-carousel {
+                padding: 0 35px;
+            }
+            
+            .carousel-nav {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
         }
         
         /* Animations */
@@ -646,7 +706,7 @@
             <h2>This Is Not Another Fitness Program.</h2>
             <p class="section-intro">PeakBody is a mentor-led body optimization system that works with your reality, not against it. We combine smart training, nutrition awareness, stress regulation, and blood analysis to create sustainable results without adding chaos to your life.</p>
             
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 60px; margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <div class="features-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 60px; margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto;">
                 <div style="text-align: center; background: var(--white); padding: 35px 30px; border-radius: 12px; box-shadow: 0 8px 25px rgba(45, 45, 45, 0.08);">
                     <h3 style="color: var(--olive); margin-bottom: 15px; font-size: 1.3rem;">Intelligent Training</h3>
                     <p style="font-size: 0.95rem; line-height: 1.7;">Efficient workouts designed for busy professionals. Maximum impact in minimum time, with modifications for your schedule and energy levels.</p>
@@ -1193,7 +1253,7 @@
             <div class="offer-price">€1,500</div>
             <div class="offer-duration">6 months of mentored body optimization</div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px 40px; max-width: 700px; margin: 40px auto; text-align: left;">
+            <div class="pricing-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px 40px; max-width: 700px; margin: 40px auto; text-align: left;">
                 <div class="offer-includes">
                     <ul>
                         <li>Full access to all 4 programs</li>
@@ -1220,7 +1280,7 @@
     <!-- Axo Longevity Partnership -->
     <section class="section" id="partner" style="padding: 60px 0;">
         <div class="container">
-            <div style="max-width: 900px; margin: 0 auto; background: var(--anthracite); border-radius: 16px; padding: 50px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+            <div class="axo-grid" style="max-width: 900px; margin: 0 auto; background: var(--anthracite); border-radius: 16px; padding: 50px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
                 <div>
                     <p style="color: var(--gold); font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">Official Partner</p>
                     <img src="../assets/images/axo-longevity-logo.png" alt="Axo Longevity" style="max-width: 200px; margin-bottom: 20px; filter: brightness(0) invert(1);">
@@ -1247,7 +1307,7 @@
             <h3 style="text-align: center; margin-top: 50px; margin-bottom: 10px;">Individual Programs</h3>
             <p class="section-intro" style="margin-bottom: 40px; font-size: 1rem;">Focused tools for specific needs.</p>
             
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto;">
+            <div class="individual-programs-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto;">
                 <div class="program-card" style="display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <h4>10-Week Weight Loss</h4>
