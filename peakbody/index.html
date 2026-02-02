@@ -595,9 +595,9 @@
                 gap: 0 !important;
             }
             
-            /* Testimonials carousel: reduce side padding */
+            /* Testimonials carousel: reduce side padding on mobile */
             .testimonials-carousel {
-                padding: 0 40px;
+                padding: 0 20px;
             }
             
             /* Problems grid: ensure 1 column */
@@ -730,7 +730,7 @@
     <!-- About Elena -->
     <section class="section" id="about">
         <div class="container">
-            <h2>Your Body Is an Operating System. I Teach You How to Run It.</h2>
+            <h2>Your Body Is an Operating System.<br>I Teach You How to&nbsp;Run&nbsp;It.</h2>
             <div class="about-elena">
                 <div>
                     <img src="../assets/images/elena-profile.jpeg" alt="Elena Klauke-García - PeakBody Mentor" class="elena-image">
@@ -899,14 +899,33 @@
                 }
                 
                 @media (max-width: 768px) {
+                    .testimonials-carousel {
+                        padding: 0 20px;
+                    }
+                    
                     .testimonial-slide {
-                        grid-template-columns: 1fr;
+                        display: none !important;
+                    }
+                    
+                    .testimonials-container.mobile-mode {
+                        display: flex;
+                        transition: transform 0.4s ease-in-out;
+                    }
+                    
+                    .testimonials-container.mobile-mode .testimonial-card-mobile {
+                        min-width: 100%;
+                        box-sizing: border-box;
+                        padding: 0 5px;
+                    }
+                    
+                    .testimonials-container.mobile-mode .testimonial-card {
+                        margin: 0;
                     }
                     
                     .carousel-nav {
-                        width: 40px;
-                        height: 40px;
-                        font-size: 1.2rem;
+                        width: 36px;
+                        height: 36px;
+                        font-size: 1.1rem;
                     }
                     
                     .carousel-nav.prev {
@@ -1230,14 +1249,111 @@
                     }
                 }
                 
+                let isMobile = false;
+                let mobileCards = [];
+                let mobileIndex = 0;
+                
+                function initMobileCarousel() {
+                    const container = document.getElementById('testimonialsContainer');
+                    const slides = container.querySelectorAll('.testimonial-slide');
+                    
+                    // Collect all cards from all slides
+                    var allCards = [];
+                    slides.forEach(function(slide) {
+                        slide.querySelectorAll('.testimonial-card').forEach(function(card) {
+                            allCards.push(card.cloneNode(true));
+                        });
+                    });
+                    
+                    // Create mobile wrappers
+                    allCards.forEach(function(card) {
+                        var wrapper = document.createElement('div');
+                        wrapper.className = 'testimonial-card-mobile';
+                        wrapper.appendChild(card);
+                        container.appendChild(wrapper);
+                    });
+                    
+                    container.classList.add('mobile-mode');
+                    mobileCards = allCards;
+                    
+                    // Update dots for individual cards
+                    var dotsContainer = document.querySelector('.carousel-dots');
+                    dotsContainer.innerHTML = '';
+                    for (var i = 0; i < allCards.length; i++) {
+                        var dot = document.createElement('div');
+                        dot.className = 'dot' + (i === 0 ? ' active' : '');
+                        dot.setAttribute('data-index', i);
+                        dot.onclick = function() { 
+                            mobileIndex = parseInt(this.getAttribute('data-index'));
+                            showMobileSlide(mobileIndex);
+                            resetAutoSlide();
+                        };
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+                
+                function showMobileSlide(index) {
+                    var container = document.getElementById('testimonialsContainer');
+                    container.style.transform = 'translateX(-' + (index * 100) + '%)';
+                    var dots = document.querySelectorAll('.dot');
+                    dots.forEach(function(d, i) { d.classList.toggle('active', i === index); });
+                    mobileIndex = index;
+                }
+                
+                // Override navigation for mobile
+                var origNextSlide = nextSlide;
+                var origPrevSlide = prevSlide;
+                var origCurrentSlide = currentSlide;
+                
+                nextSlide = function() {
+                    if (isMobile) {
+                        mobileIndex = (mobileIndex + 1) % mobileCards.length;
+                        showMobileSlide(mobileIndex);
+                        resetAutoSlide();
+                    } else {
+                        currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                        showSlide(currentSlideIndex);
+                        resetAutoSlide();
+                    }
+                };
+                
+                prevSlide = function() {
+                    if (isMobile) {
+                        mobileIndex = (mobileIndex - 1 + mobileCards.length) % mobileCards.length;
+                        showMobileSlide(mobileIndex);
+                        resetAutoSlide();
+                    } else {
+                        currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+                        showSlide(currentSlideIndex);
+                        resetAutoSlide();
+                    }
+                };
+                
                 // Initialize carousel
                 document.addEventListener('DOMContentLoaded', function() {
+                    isMobile = window.innerWidth <= 768;
+                    
+                    if (isMobile) {
+                        initMobileCarousel();
+                    }
+                    
                     startAutoSlide();
                     
                     // Pause auto-slide when user hovers over carousel
                     const carousel = document.querySelector('.testimonials-carousel');
                     carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
                     carousel.addEventListener('mouseleave', startAutoSlide);
+                    
+                    // Re-attach toggleReadMore to cloned mobile cards
+                    if (isMobile) {
+                        container = document.getElementById('testimonialsContainer');
+                        container.querySelectorAll('.testimonial-card-mobile .read-more-btn').forEach(function(btn) {
+                            btn.onclick = function() { toggleReadMore(this); };
+                        });
+                        container.querySelectorAll('.testimonial-card-mobile .show-original-btn').forEach(function(btn) {
+                            btn.onclick = function() { toggleOriginal(this); };
+                        });
+                    }
                 });
             </script>
         </div>
