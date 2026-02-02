@@ -689,9 +689,458 @@
     <section class="section" id="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
-            <script type="text/javascript" src="https://testimonial.to/js/iframeResizer.min.js"></script>
-            <iframe id='testimonialto-e77edee7-f254-4a6e-96a2-d9db74beb738' src="https://embed-v2.testimonial.to/carousel/all/peak-workouts-by-igetfit?id=e77edee7-f254-4a6e-96a2-d9db74beb738&theme=light&backgroundColor=ffffff" frameborder="0" scrolling="no" width="100%"></iframe>
-            <script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, '#testimonialto-e77edee7-f254-4a6e-96a2-d9db74beb738');</script>
+            
+            <style>
+                .testimonials-carousel {
+                    position: relative;
+                    max-width: 1000px;
+                    margin: 50px auto 0;
+                    overflow: hidden;
+                }
+                
+                .testimonials-container {
+                    display: flex;
+                    transition: transform 0.5s ease-in-out;
+                }
+                
+                .testimonial-slide {
+                    min-width: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 30px;
+                    padding: 0 10px;
+                }
+                
+                .testimonial-card {
+                    background: var(--white);
+                    padding: 30px;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 25px rgba(45, 45, 45, 0.1);
+                    position: relative;
+                }
+                
+                .testimonial-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 20px;
+                }
+                
+                .testimonial-avatar {
+                    width: 50px;
+                    height: 50px;
+                    background: var(--olive);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--white);
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                }
+                
+                .testimonial-name {
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    color: var(--anthracite);
+                }
+                
+                .testimonial-stars {
+                    color: var(--gold);
+                    font-size: 1.2rem;
+                    margin-bottom: 15px;
+                }
+                
+                .testimonial-quote {
+                    font-size: 1rem;
+                    line-height: 1.6;
+                    color: var(--anthracite);
+                    margin-bottom: 15px;
+                }
+                
+                .testimonial-quote.truncated {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+                
+                .read-more-btn, .show-original-btn {
+                    background: none;
+                    border: none;
+                    color: var(--olive);
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    text-decoration: underline;
+                    margin-top: 5px;
+                }
+                
+                .testimonial-original {
+                    font-style: italic;
+                    color: #666;
+                    font-size: 0.9rem;
+                    margin-top: 15px;
+                    padding-top: 15px;
+                    border-top: 1px solid #eee;
+                    display: none;
+                }
+                
+                .carousel-nav {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: var(--white);
+                    border: 2px solid var(--anthracite);
+                    color: var(--anthracite);
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    font-size: 1.5rem;
+                    transition: all 0.3s ease;
+                    z-index: 10;
+                }
+                
+                .carousel-nav:hover {
+                    background: var(--anthracite);
+                    color: var(--white);
+                }
+                
+                .carousel-nav.prev {
+                    left: -25px;
+                }
+                
+                .carousel-nav.next {
+                    right: -25px;
+                }
+                
+                .carousel-dots {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 30px;
+                }
+                
+                .dot {
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    background: #ddd;
+                    cursor: pointer;
+                    transition: background 0.3s ease;
+                }
+                
+                .dot.active {
+                    background: var(--olive);
+                }
+                
+                @media (max-width: 768px) {
+                    .testimonial-slide {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .carousel-nav {
+                        width: 40px;
+                        height: 40px;
+                        font-size: 1.2rem;
+                    }
+                    
+                    .carousel-nav.prev {
+                        left: -20px;
+                    }
+                    
+                    .carousel-nav.next {
+                        right: -20px;
+                    }
+                }
+                
+                @media (min-width: 769px) {
+                    .testimonial-slide {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+                
+                @media (min-width: 1200px) {
+                    .testimonial-slide {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+            </style>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonials-container" id="testimonialsContainer">
+                    <!-- Slide 1: Patricia, Hector, Sandra -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">PN</div>
+                                <div class="testimonial-name">Patricia Noriega</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="I've been on a weight loss journey for a while. To date, I've lost 22 kilos with diets and exercise. I had been switching gyms regularly because they weren't working for me and I wasn't seeing results. I started with Elena in January 2013, combined her routines with the nutrition plans they gave me, and during the first three months I managed to lose 8 kilos - that's 36% of my total weight loss... meaning I lost more weight in those 3 months than my average rate. I feel so happy and satisfied with Elena's fat burning program (cardio burning), I love it! Thank you!!">
+                                I've been on a weight loss journey for a while. I had been switching gyms regularly because they weren't working for me and I wasn't seeing results. I started with Elena in January 2013, combined her routines...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Durante un tiempo he estado en un proceso de pérdida de peso. Hasta la fecha llevo bajados 22 kilos con dietas y ejercicio. Había estado cambiando de un gimnasio con mucha regularidad ya que no me funcionaban y no veía resultados. Empecé con elena en enero 2013, combiné sus rutinas y los planes de alimentación que me dieron y durante los primeros tres meses logré bajar 8 kilos, esto representa 36% del peso perdido... significa que bajé mas peso en esos 3 meses que el promedio bajado. Me siento muy feliz y contenta de tomar el programa de Elena para quemar grasa (cardio burning), me encanta! Gracias !!"
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">HC</div>
+                                <div class="testimonial-name">Hector Celestin</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote">
+                                It changed my lifestyle. I've never been more fit before. I took personalized training and the results were evident from the first week. Being in good physical shape improved my self-esteem, confidence and self-love. The training taught me that with discipline, I can achieve any goal.
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">SC</div>
+                                <div class="testimonial-name">Sandra Cruz</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="An incredibly comprehensive program with noticeable results!! I got amazing definition, but it wasn't just the physical part - it also helped me mentally and spiritually. Elena challenges you and helps you find your inner strength. For me, it was discovering everything we can achieve by removing mental limits. By far my favorite classes!! Never the same, always challenging, with all the follow-up and support so you don't give up.">
+                                An incredibly comprehensive program with noticeable results!! I got amazing definition, but it wasn't just the physical part - it also helped me mentally and spiritually. Elena challenges you and helps you find your inner strength...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Un programa super completo con resultados que se notan!! Me marqué padrísimo pero no solo fue la parte física, también me ayudó a nivel mental y espiritual. Elena te reta y te ayuda a encontrar tu fortaleza interna, para mi fue descubrir todo lo que podemos lograr, ir quitando límites mentales. Por mucho mis clases favoritas!! Nunca iguales, siempre retadoras y con todo el seguimiento y apoyo para no rendirte."
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2: Yesika, Diana, Paty -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">YB</div>
+                                <div class="testimonial-name">Yesika Barraza</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="A few months ago I was diagnosed with Multiple Sclerosis. It was extremely hard to accept and live with the disease, plus seeing how it was consuming my body. I had Elena in my sights for many months. I dared to ask Elena for help. I started November 5th: EXTREMELY TOUGH. I don't know how I managed to walk out after that first hour! The next day I woke up sore, exhausted, but very happy and with fewer symptoms of my disease. It's been wonderful to find someone who wants to accompany me on my journey, and not just that - sometimes she's pushed me hard! Since I started the program I'm VERY happy!">
+                                A few months ago I was diagnosed with Multiple Sclerosis. It was extremely hard to accept and live with the disease. I dared to ask Elena for help. I started November 5th: EXTREMELY TOUGH. The next day I woke up sore, exhausted, but very happy...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Hace unos meses me diagnosticaron Esclerosis Múltiple. Fue durísimo aceptar y convivir con la enfermedad, además de ver como se iba consumiendo mi cuerpo. Ya tenía desde hace muchos meses a Elena en la mira. Me atreví a pedir ayuda a Elena. Empecé el 5 de noviembre: DURÍSIMO. No sé cómo pude salir caminando después de esa primer hora! Al día siguiente amanecí adolorida, cansadísima, pero muy contenta y además con menos síntomas de mi enfermedad. Ha sido maravilloso encontrar a alguien que me quiere acompañar en mi camino, y no sólo eso, a veces me ha empujado fuertemente! Desde que comencé con el programa estoy MUY contenta!"
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">DF</div>
+                                <div class="testimonial-name">Diana Fernandez</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="Since I joined IGETFIT, my life changed positively. On my first day at the gym I could barely lift an empty bar, but over time my body became stronger, healthier and more energetic. With Elena's guidance I learned to eliminate sugary drinks and adopt healthier habits - as she says, it's a lifestyle. Elena transmits incredible energy while training and motivates you to take care of your body and health. I highly recommend Elena's workouts to anyone looking to get in shape and not only transform their body but also their mind.">
+                                Since I joined IGETFIT, my life changed positively. On my first day at the gym I could barely lift an empty bar, but over time my body became stronger, healthier and more energetic. With Elena's guidance I learned to eliminate sugary drinks...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Desde que entre a IGETFIT mi vida cambio positivamente. En mi primer día en el gym apenas podía levantar una barra vacía pero con el tiempo, mi cuerpo se volvió más fuerte, más saludable y más lleno de energía. Con la guia de Elena aprendí a eliminar las bebidas azucaradas y adoptar hábitos más saludables, como ella dice es un estilo de vida. Elena transmite una energia increíble al entrenar y te motiva a cuidar tu cuerpo y tu salud. Recomiendo ampliamente los entrenamientos de Elena a cualquiera que busque estar en forma y que no solo transforme su cuerpo sino también su mente."
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">PC</div>
+                                <div class="testimonial-name">Paty Covarrubias</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote">
+                                You're the best, I love the routines and advice you give. Thank you!
+                            </div>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Eres la mejor, me encantan las rutinas y consejos que das. Gracias!"
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: Adri, Mia, Jose -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">AC</div>
+                                <div class="testimonial-name">Adri Corral</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="In the programs you work your whole body and also your mind. I like how some exercises were modified to take care of knees or other body parts according to each person's level, because for Elena the priority is always the wellbeing of those who take the programs. It's a life change in every sense. With her workouts I managed to lose many centimeters from waist, arms and legs, but most importantly: I always felt great both physically and mentally and emotionally.">
+                                In the programs you work your whole body and also your mind. I like how some exercises were modified to take care of knees or other body parts according to each person's level, because for Elena the priority is always the wellbeing...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "En los programas trabajas todo tu cuerpo y también la mente. Me gusta cómo algunos ejercicios fueron modificados para cuidar las rodillas u otras partes del cuerpo según el nivel de cada quién, pues para Elena la prioridad siempre es el bienestar de quienes tomamos los programas. Es un cambio de vida en todos los sentidos. Con sus entrenamientos logré bajar muchos centímetros de cintura, brazos y piernas, pero lo mas importante: siempre me sentí muy bien tanto física como mental y emocionalmente."
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">M</div>
+                                <div class="testimonial-name">Mia</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="Excellent class! In just a few minutes we worked the most problematic parts of the body and I found exercises I hadn't seen before in other classes. Very varied and precise. I realized that regardless of my level, taking the first step and trying to do the exercises as much as I can also has a great impact and that's very motivating.">
+                                Excellent class! In just a few minutes we worked the most problematic parts of the body and I found exercises I hadn't seen before in other classes. Very varied and precise. I realized that regardless of my level...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Excelente clase! En pocos minutos trabajamos las partes más problemáticas del cuerpo y además me encontré con ejercicios que no había visto antes en otras clases. Muy variado y preciso. Me di cuenta que no importa mi nivel, dar el primer paso y tratar de hacer los ejercicios hasta donde pueda tienen también un gran impacto y eso es muy motivador."
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">JV</div>
+                                <div class="testimonial-name">Jose Vieyra</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="When I started exercising at your gym, I was 40 years old, your oldest student and the student who never took a step back. From weighing 87 kilos at 1.7m height, I went down to 70 kilos and defined my entire body like I had never done, not even when I was young! I thank you and from there I learned to eat healthy, take care of myself and know that it's possible. After 3 medical procedures and weighing 60 kg, with what I learned from you, today I'm like this and going for more. I'm 52 years old and was about to die, today I feel full of energy and desire, because my Coach Elena knew how to lead me to live physically healthy.">
+                                When I started exercising at your gym, I was 40 years old, your oldest student and the student who never took a step back. From weighing 87 kilos at 1.7m height, I went down to 70 kilos and defined my entire body like I had never done...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Cuando empecé a ejercitarme en tu gimnasio, yo tenía 40 años, era tu alumno más viejo y tu alumno que jamás dio un paso atrás. De pesar 87 kilos, medir 1.7, bajé a 70 kilos y marqué todo mi cuerpo como jamás lo había hecho, ni de joven! Te doy las gracias y de ahí aprendí a comer sano, cuidarme y saber que se puede. Después de 3 intervenciones médicas y de pesar 60 kg, con lo que aprendí de ti, hoy estoy así y voy por más, tengo 52 años y estuve a punto de morir, hoy me siento lleno de energía y ganas, porque mi Coach Elena supo llevarme a vivir físicamente sano."
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4: Karime, Rafa -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">K</div>
+                                <div class="testimonial-name">Karime</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="I'm quite surprised by the drastic change I've undergone since I started. I used to be one of those people who lasted less than a month at the gym and made a thousand excuses not to be in shape. I'm now going into my 4th month and I've truly never felt so comfortable, so confident in my body, so full of energy and good humor. It's great to go to a place where they really care about you, where they're close to your transformation process and motivate you to continue day by day.">
+                                I'm quite surprised by the drastic change I've undergone since I started. I used to be one of those people who lasted less than a month at the gym and made a thousand excuses not to be in shape. I'm now going into my 4th month...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Estoy bastante sorprendida por el cambio tan drástico que he sufrido desde que comencé. Solía ser de esas personas que duraban menos del mes en el gimnasio y que ponían mil pretextos para no estar en forma. Ya voy para el 4to mes y en verdad jamás me había sentido tan a gusto, tan segura de mi cuerpo, tan llena de energía y buen humor. Es la onda ir a un lugar donde realmente se preocupen por ti, que estén cerca a tu proceso de transformación y te motiven a seguir día a día."
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">RC</div>
+                                <div class="testimonial-name">Rafa Cisneros</div>
+                            </div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote" data-full="It's an excellent way to lose weight and achieve your goals. I started weighing 111 kg, with the cardio burning program, after a month and a half I already weighed 100 kg. They give you personal follow-up and constant motivation that leads you to achieve your goals day by day and step by step. In conclusion, more than a series of programs, it's a lifestyle, A LIFESTYLE WORTH LIVING.">
+                                It's an excellent way to lose weight and achieve your goals. I started weighing 111 kg, with the cardio burning program, after a month and a half I already weighed 100 kg. They give you personal follow-up and constant motivation...
+                            </div>
+                            <button class="read-more-btn" onclick="toggleReadMore(this)">Read more</button>
+                            <button class="show-original-btn" onclick="toggleOriginal(this)">Show Original</button>
+                            <div class="testimonial-original">
+                                "Es una excelente manera de bajar de peso y cumplir tus objetivos. Inicié pesando 111 kg, con el programa cardio burning, pasado un mes y medio ya pesaba 100 kg, te dan un seguimiento personal y motivación constante que te lleva a lograr día a día y paso a paso tus metas. En conclusión, más que una serie de programas, es un estilo de vida, UN ESTILO DE VIDA QUE VALE LA PENA VIVIR."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav prev" onclick="prevSlide()">‹</button>
+                <button class="carousel-nav next" onclick="nextSlide()">›</button>
+                
+                <div class="carousel-dots">
+                    <div class="dot active" onclick="currentSlide(1)"></div>
+                    <div class="dot" onclick="currentSlide(2)"></div>
+                    <div class="dot" onclick="currentSlide(3)"></div>
+                    <div class="dot" onclick="currentSlide(4)"></div>
+                </div>
+            </div>
+            
+            <script>
+                let currentSlideIndex = 0;
+                const totalSlides = 4;
+                let autoSlideInterval;
+                
+                function showSlide(index) {
+                    const container = document.getElementById('testimonialsContainer');
+                    const slideWidth = 100;
+                    container.style.transform = `translateX(-${index * slideWidth}%)`;
+                    
+                    // Update dots
+                    const dots = document.querySelectorAll('.dot');
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                    
+                    currentSlideIndex = index;
+                }
+                
+                function nextSlide() {
+                    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                    showSlide(currentSlideIndex);
+                    resetAutoSlide();
+                }
+                
+                function prevSlide() {
+                    currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+                    showSlide(currentSlideIndex);
+                    resetAutoSlide();
+                }
+                
+                function currentSlide(index) {
+                    showSlide(index - 1);
+                    resetAutoSlide();
+                }
+                
+                function startAutoSlide() {
+                    autoSlideInterval = setInterval(nextSlide, 6000);
+                }
+                
+                function resetAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                    startAutoSlide();
+                }
+                
+                function toggleReadMore(button) {
+                    const quote = button.previousElementSibling;
+                    const fullText = quote.getAttribute('data-full');
+                    const currentText = quote.textContent;
+                    
+                    if (button.textContent === 'Read more') {
+                        quote.textContent = fullText;
+                        button.textContent = 'Show less';
+                    } else {
+                        const truncatedText = fullText.substring(0, 200) + '...';
+                        quote.textContent = truncatedText;
+                        button.textContent = 'Read more';
+                    }
+                }
+                
+                function toggleOriginal(button) {
+                    const original = button.nextElementSibling;
+                    
+                    if (original.style.display === 'none' || original.style.display === '') {
+                        original.style.display = 'block';
+                        button.textContent = 'Hide Original';
+                    } else {
+                        original.style.display = 'none';
+                        button.textContent = 'Show Original';
+                    }
+                }
+                
+                // Initialize carousel
+                document.addEventListener('DOMContentLoaded', function() {
+                    startAutoSlide();
+                    
+                    // Pause auto-slide when user hovers over carousel
+                    const carousel = document.querySelector('.testimonials-carousel');
+                    carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                    carousel.addEventListener('mouseleave', startAutoSlide);
+                });
+            </script>
         </div>
     </section>
 
