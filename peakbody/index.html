@@ -693,8 +693,9 @@
             <style>
                 .testimonials-carousel {
                     position: relative;
-                    max-width: 1000px;
+                    max-width: 1100px;
                     margin: 50px auto 0;
+                    padding: 0 50px;
                     overflow: hidden;
                 }
                 
@@ -810,11 +811,11 @@
                 }
                 
                 .carousel-nav.prev {
-                    left: -25px;
+                    left: 0;
                 }
                 
                 .carousel-nav.next {
-                    right: -25px;
+                    right: 0;
                 }
                 
                 .carousel-dots {
@@ -849,11 +850,11 @@
                     }
                     
                     .carousel-nav.prev {
-                        left: -20px;
+                        left: 0;
                     }
                     
                     .carousel-nav.next {
-                        right: -20px;
+                        right: 0;
                     }
                 }
                 
@@ -1063,8 +1064,31 @@
                 let currentSlideIndex = 0;
                 const totalSlides = 4;
                 let autoSlideInterval;
+                let readMoreOpen = false;
+                
+                function closeAllReadMore() {
+                    document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+                        if (btn.textContent === 'Show less') {
+                            const quote = btn.previousElementSibling;
+                            const fullText = quote.getAttribute('data-full');
+                            quote.textContent = fullText.substring(0, 200) + '...';
+                            btn.textContent = 'Read more';
+                        }
+                    });
+                    document.querySelectorAll('.testimonial-original').forEach(function(orig) {
+                        orig.style.display = 'none';
+                        var btn = orig.previousElementSibling;
+                        if (btn && btn.classList.contains('show-original-btn')) {
+                            btn.textContent = 'Show Original';
+                        }
+                    });
+                    readMoreOpen = false;
+                }
                 
                 function showSlide(index) {
+                    // Close any expanded testimonials before sliding
+                    closeAllReadMore();
+                    
                     const container = document.getElementById('testimonialsContainer');
                     const slideWidth = 100;
                     container.style.transform = `translateX(-${index * slideWidth}%)`;
@@ -1107,16 +1131,25 @@
                 function toggleReadMore(button) {
                     const quote = button.previousElementSibling;
                     const fullText = quote.getAttribute('data-full');
-                    const currentText = quote.textContent;
                     
                     if (button.textContent === 'Read more') {
                         quote.textContent = fullText;
                         button.textContent = 'Show less';
+                        readMoreOpen = true;
+                        clearInterval(autoSlideInterval);
                     } else {
                         const truncatedText = fullText.substring(0, 200) + '...';
                         quote.textContent = truncatedText;
                         button.textContent = 'Read more';
+                        readMoreOpen = false;
+                        startAutoSlide();
                     }
+                }
+                
+                function isAnyExpanded() {
+                    var hasReadMore = Array.from(document.querySelectorAll('.read-more-btn')).some(function(b) { return b.textContent === 'Show less'; });
+                    var hasOriginal = Array.from(document.querySelectorAll('.testimonial-original')).some(function(el) { return el.style.display === 'block'; });
+                    return hasReadMore || hasOriginal;
                 }
                 
                 function toggleOriginal(button) {
@@ -1125,9 +1158,15 @@
                     if (original.style.display === 'none' || original.style.display === '') {
                         original.style.display = 'block';
                         button.textContent = 'Hide Original';
+                        readMoreOpen = true;
+                        clearInterval(autoSlideInterval);
                     } else {
                         original.style.display = 'none';
                         button.textContent = 'Show Original';
+                        if (!isAnyExpanded()) {
+                            readMoreOpen = false;
+                            startAutoSlide();
+                        }
                     }
                 }
                 
