@@ -12,13 +12,13 @@
     <meta property="og:url" content="https://peak-method.com/peakbody/">
     <meta property="og:title" content="PeakBody - Body Optimization for High-Performing Women">
     <meta property="og:description" content="A 6-month system combining smart training, nutrition awareness, and stress regulation. For professional women 30+ who want sustainable results without burnout.">
-    <meta property="og:image" content="https://peak-method.com/assets/images/elena-profile.jpeg">
+    <meta property="og:image" content="https://peak-method.com/assets/images/elena-candid.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PeakBody - Body Optimization for High-Performing Women">
     <meta name="twitter:description" content="A 6-month system combining smart training, nutrition awareness, and stress regulation. For professional women 30+ who want sustainable results without burnout.">
-    <meta name="twitter:image" content="https://peak-method.com/assets/images/elena-profile.jpeg">
+    <meta name="twitter:image" content="https://peak-method.com/assets/images/elena-candid.jpg">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -383,6 +383,30 @@
             box-shadow: 0 15px 35px rgba(45, 45, 45, 0.15);
         }
         
+        .elena-images {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .elena-main {
+            width: 100%;
+        }
+        
+        .elena-image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .elena-image-small {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(45, 45, 45, 0.1);
+        }
+        
         .elena-content h3 {
             margin-bottom: 20px;
         }
@@ -568,6 +592,10 @@
                 text-align: center;
             }
             
+            .elena-image-small {
+                height: 140px;
+            }
+            
             .newsletter-form {
                 flex-direction: column;
             }
@@ -745,8 +773,12 @@
         <div class="container">
             <h2>Your Body Is an Operating System.<br>I Teach You How to&nbsp;Run&nbsp;It.</h2>
             <div class="about-elena">
-                <div>
-                    <img src="../assets/images/elena-profile.jpeg" alt="Elena Klauke-García - PeakBody Mentor" class="elena-image">
+                <div class="elena-images">
+                    <img src="../assets/images/elena-profile.jpeg" alt="Elena Klauke-García - PeakBody Mentor" class="elena-image elena-main">
+                    <div class="elena-image-grid">
+                        <img src="../assets/images/elena-handstand.jpg" alt="Elena doing handstand on beach" class="elena-image-small">
+                        <img src="../assets/images/elena-candid.jpg" alt="Elena smiling" class="elena-image-small">
+                    </div>
                 </div>
                 <div class="elena-content">
                     <h3>Elena Klauke-García</h3>
