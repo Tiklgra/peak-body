@@ -1284,13 +1284,11 @@
                 }
                 
                 function startAutoSlide() {
-                    // Auto-scroll disabled - users navigate manually with arrows/dots
-                    // autoSlideInterval = setInterval(nextSlide, 6000);
+                    // Auto-scroll completely disabled
                 }
                 
                 function resetAutoSlide() {
-                    clearInterval(autoSlideInterval);
-                    startAutoSlide();
+                    // Auto-scroll completely disabled
                 }
                 
                 function toggleReadMore(button) {
@@ -1425,10 +1423,7 @@
                     
                     startAutoSlide();
                     
-                    // Pause auto-slide when user hovers over carousel
-                    const carousel = document.querySelector('.testimonials-carousel');
-                    carousel.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-                    carousel.addEventListener('mouseleave', startAutoSlide);
+                    // Auto-slide disabled - manual navigation only
                     
                     // Re-attach toggleReadMore to cloned mobile cards
                     if (isMobile) {
